@@ -1,7 +1,20 @@
+import { Metadata } from "next";
 import { posts } from "../../data";
 
 interface Props {
   params: { id: string };
+}
+
+export const metadata: Metadata = {
+  title: "Post Heaven | Post Page",
+  description: "How's your goat doing?",
+};
+
+// Hämtar alla id:n som NextJS ska bygga html filer för
+export function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id,
+  }));
 }
 
 export default function PostPage({ params }: Props) {
